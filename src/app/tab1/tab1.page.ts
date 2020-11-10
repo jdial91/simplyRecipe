@@ -11,6 +11,7 @@ export class Tab1Page {
   constructor( private recipeService: RecipeService ) {}
   
   ionViewWillEnter() {
-    this.recipeService.grabRecipes().subscribe();
+    let searchterm = "crawfish"
+    this.recipeService.grabRecipes(searchterm).subscribe();
     }
 }

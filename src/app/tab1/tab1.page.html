@@ -12,7 +12,6 @@
   <ion-card class="welcome-card" *ngFor="let item of recipeService.recipeList">
     <img src="https://spoonacular.com/recipeImages/{{ item.image }}" alt="" />
     <ion-card-header>
-      <ion-card-subtitle>{{ item.id }}</ion-card-subtitle>
       <ion-card-title>{{ item.title }}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
