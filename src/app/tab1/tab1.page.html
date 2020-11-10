@@ -1,17 +1,23 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      Find a Recipe
     </ion-title>
   </ion-toolbar>
+  <ion-searchbar showCancelButton="focus"></ion-searchbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+<ion-content>
+  <ion-card class="welcome-card" *ngFor="let item of recipeService.recipeList">
+    <img src="https://spoonacular.com/recipeImages/{{ item.image }}" alt="" />
+    <ion-card-header>
+      <ion-card-subtitle>{{ item.id }}</ion-card-subtitle>
+      <ion-card-title>{{ item.title }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ item.readyInMinutes }} minutes</p>
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>
