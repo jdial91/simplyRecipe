@@ -1,22 +1,28 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
+
+    <ion-title id="title">
       Find a Recipe
     </ion-title>
+    <ion-buttons id = "SBarea" slot="end">
+      
+      <ion-searchbar [(ngModel)]="searchQuery" (change)="recipeSearch($event)" autocorrect="off"></ion-searchbar>
+      <ion-button (click)="presentPopover($event)"> 
+       
+      </ion-button>
+  </ion-buttons>
   </ion-toolbar>
-  <ion-searchbar showCancelButton="focus"></ion-searchbar>
 </ion-header>
 
 
 <ion-content>
-  <ion-card class="welcome-card" *ngFor="let item of recipeService.recipeList">
+
+  <ion-card  button = 'true' (click)=openNative(item.url) class="welcome-card" *ngFor="let item of recipeService.recipeList">
     <img src="https://spoonacular.com/recipeImages/{{ item.image }}" alt="" />
     <ion-card-header>
       <ion-card-title>{{ item.title }}</ion-card-title>
     </ion-card-header>
-    <ion-card-content>
-      <p>{{ item.readyInMinutes }} minutes</p>
-    </ion-card-content>
+
   </ion-card>
 
 </ion-content>
