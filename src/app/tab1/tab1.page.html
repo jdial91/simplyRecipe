@@ -7,7 +7,7 @@
     <ion-buttons id = "SBarea" slot="end">
       
       <ion-searchbar [(ngModel)]="searchQuery" (change)="recipeSearch($event)" autocorrect="off"></ion-searchbar>
-      <ion-button (click)="presentPopover($event)"> 
+      <ion-button> 
        
       </ion-button>
   </ion-buttons>
@@ -16,8 +16,7 @@
 
 
 <ion-content>
-
-  <ion-card  button = 'true' (click)=openNative(item.url) class="welcome-card" *ngFor="let item of recipeService.recipeList">
+  <ion-card  button = 'true' (click)="viewRecipe(item.id)" class="welcome-card" *ngFor="let item of recipeService.recipeList">
     <img src="https://spoonacular.com/recipeImages/{{ item.image }}" alt="" />
     <ion-card-header>
       <ion-card-title>{{ item.title }}</ion-card-title>

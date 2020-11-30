@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="danger" (click)="dismiss()"> X
+      </ion-button>
+    </ion-buttons>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="welcome-card"  >
+    
+    <img src="{{ recipe.image }}" alt="" />
+    <h1>{{recipe.title}}</h1>
+    <ion-card-header>
+      <ion-card-title>Ingredients</ion-card-title>
+    </ion-card-header>
+    <ul>
+      <li *ngFor="let item of recipe.extendedIngredients">{{item.original}}</li>
+    </ul>
+
+    <ion-card-header>
+      <ion-card-title>Instructions</ion-card-title>
+    </ion-card-header>
+    
+      {{recipe.instructions}}
+    
+  </ion-card>
+
+</ion-content>
+{{ recipe.name }}

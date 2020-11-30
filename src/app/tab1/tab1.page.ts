@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { RecipeService } from '../services/recipe.service';
+import { ViewPage} from '../view/view.page';
+import { ModalController } from '@ionic/angular';
+import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 
 @Component({
   selector: 'app-tab1',
@@ -8,12 +11,13 @@ import { RecipeService } from '../services/recipe.service';
 })
 export class Tab1Page {
 
-  constructor( private recipeService: RecipeService ) {}
+  constructor( private recipeService: RecipeService, public modalController: ModalController, private screenOrientation: ScreenOrientation ) {}
   
   searchValue: number = 0;
 
   ionViewWillEnter() {
-    let searchterm = "crawfish"
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+    let searchterm = ""
     this.recipeService.grabRecipes(searchterm).subscribe();
     }
 
@@ -21,9 +25,12 @@ export class Tab1Page {
     let searchterm = key.target.value
     this.recipeService.grabRecipes(searchterm).subscribe();
     }
-    
-  // openNative(x: string){
-  //   console.log('opening...');
-  //   this.iab.create(x, `_system`);
-  //   }
+  
+  async viewRecipe(id:any) {
+    console.log(id)
+    const modal = await this.modalController.create({
+    component: ViewPage, 
+    componentProps: {id: id}});
+    return await modal.present();
+  }
 }
