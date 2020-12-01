@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import * as firebase from 'firebase/app';
 @Component({
   selector: 'app-tabs',
   templateUrl: 'tabs.page.html',
@@ -7,6 +7,9 @@ import { Component } from '@angular/core';
 })
 export class TabsPage {
 
-  constructor() {}
+  constructor( ) {}
 
+  logout() {
+    firebase.auth().signOut();
+  }
 }

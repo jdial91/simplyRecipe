@@ -11,6 +11,7 @@ import { HttpService } from '../http.service';
 })
 export class ViewPage implements OnInit {
   id: any;
+  recipe: any;
   constructor(public viewCtrl: ModalController,
      private recipeService: RecipeService,
      private screenOrientation: ScreenOrientation,

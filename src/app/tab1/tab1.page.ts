@@ -3,6 +3,8 @@ import { RecipeService } from '../services/recipe.service';
 import { ViewPage} from '../view/view.page';
 import { ModalController } from '@ionic/angular';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
+import { UserService } from '../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab1',
@@ -11,9 +13,18 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 })
 export class Tab1Page {
 
-  constructor( private recipeService: RecipeService, public modalController: ModalController, private screenOrientation: ScreenOrientation ) {}
+  constructor( private recipeService: RecipeService,
+               public modalController: ModalController, 
+               private screenOrientation: ScreenOrientation,
+               private userService: UserService,
+               private router: Router ) {}
   
   searchValue: number = 0;
+    
+  showLogin() {
+    this.router.navigateByUrl('/login');
+
+  }
 
   ionViewWillEnter() {
     this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
