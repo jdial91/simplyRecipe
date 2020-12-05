@@ -3,8 +3,7 @@
     <ion-buttons slot="start">
       <ion-button color="danger" (click)="dismiss()"> X
       </ion-button>
-    </ion-buttons>
-    
+    </ion-buttons>  
   </ion-toolbar>
 </ion-header>
 
@@ -13,6 +12,9 @@
     
     <img src="{{ recipe.image }}" alt="" />
     <h1>{{recipe.title}}</h1>
+    
+    <ion-button type="submit" (click)="addtofavfunc(recipe)">Add to Favorites</ion-button>
+    
     <ion-card-header>
       <ion-card-title>Ingredients</ion-card-title>
     </ion-card-header>
